@@ -6,7 +6,7 @@ dependencies:
 
 This is a simple python script which deletes files in a specific folder every 24 hours
 
-To configure:
+----- Configuration steps -------
 #1) Go to WinKey > Virus & Threat protection > Scroll to Exlusions > Add or remove exlusions > Add an exlusion > Folder > C:\ScriptPath
 2) bash cmd admin at script location
 > python cleanup_service.py --startup auto install
