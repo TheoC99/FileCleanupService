@@ -2,6 +2,7 @@
 
 Dependencies:
 > python
+
 > pip install pywin32
 
 
@@ -9,12 +10,14 @@ This is a simple python script which deletes files in a specific folder every 24
 
 ----- Configuration steps -------
 
-1) WinKey > Virus & Threat protection > Scroll to Exlusions > Add or remove exlusions > Add an exlusion > Folder > C:\ScriptPath\
+1) Allow the scrypt to run without it being blocked by the antivirus.
+WinKey > Virus & Threat protection > Scroll to Exlusions > Add or remove exlusions > Add an exlusion > Folder > C:\ScriptPath\
 
-2) bash cmd admin at script location
+3) bash cmd admin at script location
 > python cleanup_service.py --startup auto install
 
->--startup auto:
+> --startup auto:
+
 Configures the service to start automatically at boot.
 
 3) Start the service:
