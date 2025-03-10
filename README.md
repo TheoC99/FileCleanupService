@@ -10,19 +10,26 @@ To configure:
 
 --startup auto: Configures the service to start automatically at boot.
 
-2) Start the service:
-python cleanup_service.py start
-
-----Manage the Service ------
+---- Manage the Service ------
+> python cleanup_service.py start
 > python cleanup_service.py stop
 > python cleanup_service.py remove
 
-
-Update:
-Make sure it also deletes folders and its containing files
-
-To Delete:
-cmd bash:
+---- Kill the Service Process ----
+1) Open Command Prompt as Administrator.
+2) Find the service's Process ID (PID) by running:
+> sc queryex FileCleanupService
+Look for the PID in the output, like this:
+SERVICE_NAME: FileCleanupService
+STATE              : 3  STOP_PENDING
+PID               : 1234  <---- This is the process ID
+3) Kill the process using:
+>taskkill /F /PID 1234
+(Replace 1234 with the actual PID from Step 2.)
+Verify the service is now stopped:
+> sc query FileCleanupService
+---- Delete the Service -----
+Once the service is fully stopped, remove it with:
 > sc delete FileCleanupService
-Verify Deletion run bash:
->sc query FileCleanupService
+Then restart your computer to finalize the removal.
+
