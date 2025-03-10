@@ -1,7 +1,9 @@
 This is a simple python script which deletes files periodically every 24 hours.
 
 ------ Installing ------
+
 Method 1)
+
 Bash cmd admin at script location:
 ````
 python cleanup_service.py --startup auto install
