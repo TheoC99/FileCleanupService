@@ -1,7 +1,3 @@
-dependencies:
-> pip install pywin32
-
-
 This is a simple python script which deletes files in a specific folder every 24 hours
 
 To configure:
