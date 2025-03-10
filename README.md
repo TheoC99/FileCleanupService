@@ -11,10 +11,11 @@ To configure:
 --startup auto: Configures the service to start automatically at boot.
 
 ---- Manage the Service ------
-> python cleanup_service.py start
-> python cleanup_service.py stop
-> python cleanup_service.py remove
-
+```
+ python cleanup_service.py start
+ python cleanup_service.py stop
+ python cleanup_service.py remove
+```
 ---- Kill the Service Process ----
 1) Open Command Prompt as Administrator.
 2) Find the service's Process ID (PID) by running:
