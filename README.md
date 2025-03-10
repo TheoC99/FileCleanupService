@@ -12,6 +12,7 @@ Method 2)
 - Script creates `C:\FileCleanupConfig\config.txt`
 - config.txt get read every 5 minutes.
 - If any changes have been made, the target folder changes.
+  
 ---- Managing the Service ------
 
 ````
