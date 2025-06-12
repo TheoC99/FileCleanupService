@@ -1,13 +1,4 @@
-This service deletes every file and subfolder from a fixed temporary directory
-once every 24 hours.  The folder is chosen automatically: if
-`D:\TempStorage` exists it will be cleaned, otherwise `C:\TempStorage` is used.
-
-Install required Python packages with:
-```
-pip install -r requirements.txt
-```
-  
----- Managing the Service ------
+  ---- Managing the Service ------
 
 ````
  python cleanup_service.py start
