@@ -4,17 +4,25 @@ This is a simple python script which deletes files periodically every 24 hours.
 
 Method 1)
 
-Bash cmd admin at script location:
+1. Open an **Administrator** command prompt in the repository folder.
+2. Install the service:
 ````
 python cleanup_service.py --startup auto install
 ````
+3. Create `C:\FileCleanupConfig\config.txt` and write the full path of the
+   folder you want cleaned into the file.  If the directory does not exist,
+   create it first.
+4. The service checks this file every minute and picks up any changes
+   automatically.
 
-Method 2) 
-- Run install_service.bat as administrator
-- When Promted enter the target temporary folder and hit enter
-- Script creates `C:\FileCleanupConfig\config.txt`
-- config.txt get read every 5 minutes.
-- If any changes have been made, the target folder changes.
+Method 2)
+- Run `install_service.bat` as **Administrator**.
+- When prompted, enter the folder you want cleaned and press **Enter**.
+- The batch file generates a temporary Python script using that folder path,
+  packages it with PyInstaller and installs the resulting executable as a
+  service.
+- No configuration file is used for this method. To change the folder later,
+  rerun the batch file with a new path.
   
 ---- Managing the Service ------
 
