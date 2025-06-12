@@ -1,42 +1,30 @@
-  ---- Managing the Service ------
+# FileCleanupService
 
-````
- python cleanup_service.py start
-````
-````
- python cleanup_service.py stop
-````
-````
- python cleanup_service.py remove
-````
+**Purpose**  
+A lightweight scheduler that periodically deletes files older than _N_ days from a target directory—ideal for log rotation, temp-folder pruning, and automated disk-space management.
 
----- Kill the Service Process ----
-1) Open Command Prompt as Administrator.
-2) Find the service's Process ID (PID) by running:
-````
-sc queryex FileCleanupService
-````
-Look for the PID in the output, like this:
-````
-SERVICE_NAME: FileCleanupService
-STATE              : 3  STOP_PENDING
-PID               : 1234  <---- This is the process ID
-````
-3) Kill the process using:
-````
-taskkill /F /PID 1234
-````
-(Replace 1234 with the actual PID from Step 2.)
+---
 
-4) Verify the service is now stopped:
-````
-sc query FileCleanupService
-````
----- Delete the Service -----
+## 🚀 Features
 
-5) Once the service is fully stopped, remove it with:
-````
-sc delete FileCleanupService
-````
-Then restart your computer to finalize the removal.
+- Deletes files older than configurable threshold  
+- “Dry-run” mode for safe preview  
+- Detailed logging (console & file)  
+- Configurable via CLI flags or JSON/YAML config  
+- Cross-platform: Windows service & Unix cron compatibility  
 
+---
+
+## 🛠️ Prerequisites
+
+- Python ≥ 3.8  
+- Dependencies: listed in `requirements.txt`  
+
+---
+
+## ⚙️ Installation
+
+1. Clone the repo  
+   ```bash
+   git clone https://github.com/TheoC99/FileCleanupService.git
+   cd FileCleanupService
