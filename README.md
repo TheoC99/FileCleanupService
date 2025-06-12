@@ -6,13 +6,6 @@ Install required Python packages with:
 ```
 pip install -r requirements.txt
 ```
-
------- Installing ------
-
-Installation (run from an elevated command prompt):
-````
-python cleanup_service.py --startup auto install
-````
   
 ---- Managing the Service ------
 
