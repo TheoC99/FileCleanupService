@@ -5,7 +5,7 @@ A lightweight scheduler that periodically deletes files older than _N_ days from
 
 ---
 
-## 🚀 Features
+## Features
 
 - Deletes files older than configurable threshold  
 - “Dry-run” mode for safe preview  
