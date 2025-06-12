@@ -2,19 +2,16 @@ This is a simple python script which deletes files periodically every 24 hours.
 
 ------ Installing ------
 
-Method 1)
+To install the service:
 
-Bash cmd admin at script location:
-````
+1. Open an Administrator command prompt in this directory.
+2. Run the following command:
+```
 python cleanup_service.py --startup auto install
-````
-
-Method 2) 
-- Run install_service.bat as administrator
-- When Promted enter the target temporary folder and hit enter
-- Script creates `C:\FileCleanupConfig\config.txt`
-- config.txt get read every 5 minutes.
-- If any changes have been made, the target folder changes.
+```
+3. Create `C:\FileCleanupConfig\config.txt` and put the path to the
+   folder you want cleaned on the first line. The service checks this file
+   every five minutes for updates.
   
 ---- Managing the Service ------
 
