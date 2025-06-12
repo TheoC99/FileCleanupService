@@ -1,20 +1,13 @@
-This is a simple python script which deletes files periodically every 24 hours.
+This service deletes every file and subfolder from a fixed temporary directory
+once every 24 hours.  The folder is chosen automatically: if
+`D:\TempStorage` exists it will be cleaned, otherwise `C:\TempStorage` is used.
 
 ------ Installing ------
 
-Method 1)
-
-Bash cmd admin at script location:
+Installation (run from an elevated command prompt):
 ````
 python cleanup_service.py --startup auto install
 ````
-
-Method 2) 
-- Run install_service.bat as administrator
-- When Promted enter the target temporary folder and hit enter
-- Script creates `C:\FileCleanupConfig\config.txt`
-- config.txt get read every 5 minutes.
-- If any changes have been made, the target folder changes.
   
 ---- Managing the Service ------
 
