@@ -1,5 +1,10 @@
 This is a simple python script which deletes files periodically every 24 hours.
 
+Install required Python packages with:
+```
+pip install -r requirements.txt
+```
+
 ------ Installing ------
 
 Method 1)
