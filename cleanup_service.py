@@ -5,7 +5,11 @@ import win32serviceutil
 import win32service
 import win32event
 
-CONFIG_FILE = r"C:\FileCleanupConfig\config.txt"  # Path to config file
+# Determine which temp directory to clean. If D:\\TempStorage exists it will be
+# used, otherwise the fallback path C:\\TempStorage is used.
+TEMP_DIR = (
+    r"D:\\TempStorage" if os.path.exists(r"D:\\TempStorage") else r"C:\\TempStorage"
+)
 
 class FileCleanupService(win32serviceutil.ServiceFramework):
     _svc_name_ = "FileCleanupService"
@@ -16,8 +20,6 @@ class FileCleanupService(win32serviceutil.ServiceFramework):
         super().__init__(args)
         self.stop_event = win32event.CreateEvent(None, 0, 0, None)
         self.running = True
-        self.folder_to_clean = self.get_folder_path()
-        self.last_modified = os.path.getmtime(CONFIG_FILE) if os.path.exists(CONFIG_FILE) else 0
 
     def SvcStop(self):
         self.ReportServiceStatus(win32service.SERVICE_STOP_PENDING)
@@ -25,41 +27,18 @@ class FileCleanupService(win32serviceutil.ServiceFramework):
         self.running = False
 
     def SvcDoRun(self):
+        """Main service loop that cleans TEMP_DIR every 24 hours."""
         interval_seconds = 24 * 60 * 60  # 24 hours in seconds
-        config_check_interval = 60  # Check for config updates every 60 seconds
+        sleep_interval = 60  # Sleep in 60 second increments to allow fast stop
 
         while self.running:
-            # Check if config.txt has been updated
-            if self.is_config_updated():
-                self.folder_to_clean = self.get_folder_path()
+            self.delete_files_and_folders(TEMP_DIR)
 
-            if self.folder_to_clean:
-                self.delete_files_and_folders(self.folder_to_clean)
-
-            # Sleep in shorter intervals to detect config changes
-            for _ in range(interval_seconds // config_check_interval):
+            for _ in range(interval_seconds // sleep_interval):
                 if not self.running:
                     break
-                time.sleep(config_check_interval)
+                time.sleep(sleep_interval)
 
-    def is_config_updated(self):
-        """ Check if config.txt has been modified since last check. """
-        if os.path.exists(CONFIG_FILE):
-            modified_time = os.path.getmtime(CONFIG_FILE)
-            if modified_time > self.last_modified:
-                self.last_modified = modified_time
-                return True
-        return False
-
-    @staticmethod
-    def get_folder_path():
-        """ Reads the folder path from the config file. """
-        if os.path.exists(CONFIG_FILE):
-            with open(CONFIG_FILE, "r") as f:
-                folder_path = f.readline().strip()
-                if os.path.exists(folder_path):
-                    return folder_path
-        return None  # Return None if invalid or missing
 
     @staticmethod
     def delete_files_and_folders(folder_path):
