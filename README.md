@@ -28,3 +28,4 @@ A lightweight scheduler that periodically deletes files older than _N_ days from
    ```bash
    git clone https://github.com/TheoC99/FileCleanupService.git
    cd FileCleanupService
+2. python cleanup_service.py --startup auto install
