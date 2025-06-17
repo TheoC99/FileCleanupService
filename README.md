@@ -29,7 +29,7 @@ A lightweight scheduler that periodically deletes files older than _N_ days from
    git clone https://github.com/TheoC99/FileCleanupService.git
    cd FileCleanupService
 
-2. By default create a TempStorage folder in either C:/ or D:/ drive.
+2. By default create a folder called "TempStorage" in either C:/ or D:/ drive.
 3. python cleanup_service.py --startup auto install
     ```bash
     python cleanup_service.py --startup auto install
