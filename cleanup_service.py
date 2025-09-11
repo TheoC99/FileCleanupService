@@ -44,6 +44,7 @@ class FileCleanupService(win32serviceutil.ServiceFramework):
     def delete_files_and_folders(folder_path):
         """ Deletes all files and subfolders inside the specified folder. """
         try:
+            """Tries to locate the OS folder dicated from the SvcDoRun"""
             if not os.path.exists(folder_path):
                 return
 
