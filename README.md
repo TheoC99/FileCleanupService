@@ -15,14 +15,14 @@ A lightweight scheduler that periodically deletes files older than _N_ days from
 
 ---
 
-## 🛠️ Prerequisites
+## Prerequisites
 
 - Python ≥ 3.8  
 - Dependencies: listed in `requirements.txt`  
 
 ---
 
-## ⚙️ Installation
+##  Installation
 
 1. Clone the repo  
    ```bash
